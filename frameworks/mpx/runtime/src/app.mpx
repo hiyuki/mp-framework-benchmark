@@ -1,0 +1,36 @@
+<script>
+  import mpx, { createApp } from '@mpxjs/core'
+  import apiProxy from '@mpxjs/api-proxy'
+
+  mpx.use(apiProxy)
+
+  mpx.config.useStrictDiff = true
+
+  import { proxySetData } from '../../../../utils/proxy'
+
+  proxySetData({
+    console: true
+  })
+
+  // app.js
+  createApp({
+    onLaunch () {
+    }
+  })
+</script>
+
+<style>
+
+</style>
+
+<script type="application/json">
+  {
+    "pages": [
+      "./pages/index",
+      "./pages/static"
+    ],
+    "window": {
+      "navigationBarTitleText": "mpx-runtime-benchmark"
+    }
+  }
+</script>

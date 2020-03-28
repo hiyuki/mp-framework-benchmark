@@ -1,0 +1,17 @@
+{
+  "mode": "history",
+  "domain": "https://www.chameleon.com",
+  "routes": [
+    {
+      "url": "/cml/h5/index",
+      "path": "/pages/index",
+      "name": "index",
+      "mock": "index.php"
+    },
+    {
+      "url": "/cml/h5/static",
+      "path": "/pages/static",
+      "name": "static"
+    }
+  ]
+}

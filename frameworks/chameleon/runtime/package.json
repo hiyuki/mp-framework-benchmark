@@ -1,0 +1,20 @@
+{
+  "name": "chameleon-runtime-benchmark",
+  "version": "1.0.0",
+  "description": "A chameleon project",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "build": "cml wx build",
+    "dev": "cml wx dev"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chameleon-api": "1.0.0",
+    "chameleon-runtime": "1.0.0",
+    "chameleon-store": "1.0.0",
+    "chameleon-tool": "^1.0.5",
+    "chameleon-ui-builtin": "1.0.0",
+    "cml-ui": "1.0.0"
+  }
+}

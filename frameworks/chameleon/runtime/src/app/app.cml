@@ -1,0 +1,53 @@
+<template>
+  <app router-config="{{routerConfig}}"></app>
+</template>
+
+<script>
+  import routerConfig from '../router.config.json'
+  import { proxySetData } from '../../../../../utils/proxy'
+
+  proxySetData({
+    console: true
+  })
+
+  class App {
+    data = {
+      routerConfig
+    }
+
+    created (res) {
+    }
+  }
+
+  export default new App()
+</script>
+
+<style>
+
+</style>
+
+<script cml-type="json" type="application/json">
+  {
+    "wx": {
+      "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "chameleon-runtime-benchmark",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    "baidu": {
+      "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "Chameleon",
+        "navigationBarTextStyle": "black"
+      }
+    },
+    "alipay": {
+      "window": {
+        "defaultTitle": "Chameleon"
+      }
+    }
+  }
+</script>

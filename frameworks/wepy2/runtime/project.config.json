@@ -1,0 +1,13 @@
+{
+  "description": "Wepy2 runtime benchmark",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "wepy2-runtime-benchmark",
+  "miniprogramRoot": "./weapp"
+}

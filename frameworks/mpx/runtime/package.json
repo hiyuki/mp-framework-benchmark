@@ -1,0 +1,44 @@
+{
+  "name": "mpx-runtime-benchmark",
+  "version": "1.0.0",
+  "description": "Mpx runtime benchmark",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devbuild": "node ./build/build.js",
+    "watch": "node ./build/build.js -w",
+    "build": "node ./build/build.js -p",
+    "prod": "node ./build/build.js -p",
+    "help": "node ./build/build.js --help"
+  },
+  "author": "hiyuki <674883329@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@mpxjs/api-proxy": "^2.3.0",
+    "@mpxjs/core": "^2.4.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.3",
+    "@mpxjs/webpack-plugin": "^2.4.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-runtime": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "chalk": "^2.3.2",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "ora": "^2.0.0",
+    "path": "^0.12.7",
+    "rimraf": "^2.6.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.2",
+    "webpack-bundle-analyzer": "^3.3.2"
+  }
+}
