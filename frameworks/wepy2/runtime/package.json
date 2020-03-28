@@ -5,9 +5,7 @@
   "main": "weapp/app.js",
   "scripts": {
     "dev": "./node_modules/.bin/wepy build --watch",
-    "build": "cross-env NODE_ENV=production ./node_modules/.bin/wepy build --no-cache",
-    "clean": "rm -rf weapp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production ./node_modules/.bin/wepy build --no-cache"
   },
   "wepy": {
     "module-a": false,

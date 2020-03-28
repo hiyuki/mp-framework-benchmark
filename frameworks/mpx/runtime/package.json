@@ -4,12 +4,8 @@
   "description": "Mpx runtime benchmark",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devbuild": "node ./build/build.js",
-    "watch": "node ./build/build.js -w",
-    "build": "node ./build/build.js -p",
-    "prod": "node ./build/build.js -p",
-    "help": "node ./build/build.js --help"
+    "dev": "node ./build/build.js -w",
+    "build": "node ./build/build.js -p"
   },
   "author": "hiyuki <674883329@qq.com>",
   "license": "ISC",
