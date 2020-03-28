@@ -1,0 +1,17 @@
+{
+	"compileType": "miniprogram",
+	"setting": {
+		"newFeature": true,
+		"urlCheck": true,
+		"es6": false,
+		"postcss": true,
+		"minified": false,
+		"autoAudits": false
+	},
+	"appid": "wxe9646e768c9be135",
+	"projectname": "native-runtime-benchmark",
+	"description": "Native runtime benchmark",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}

@@ -1,0 +1,22 @@
+<view>
+  <view class="controls">
+    <button bindtap="add">新增可用券(100)</button>
+    <button bindtap="addLot">新增可用券(1000)</button>
+    <button bindtap="delete">删除可用券(1)</button>
+    <button bindtap="deleteAll">删除可用券(all)</button>
+    <button bindtap="update">更新可用券(1)</button>
+    <button bindtap="updateAll">更新可用券(all)</button>
+    <button bindtap="add2Lot">新增不可用券(1000)</button>
+    <button bindtap="toggleList">切换到{{show2?'可用券':'不可用券'}}</button>
+    <button bindtap="reLaunch">刷新页面</button>
+    <button bindtap="reLaunch2">进入静态测试</button>
+  </view>
+  <view class="couponList" wx:if="{{!show2}}">
+    <view class="title">可用券列表({{listData.length}})</view>
+    <coupon info="{{item}}" mpxPageStatus="{{mpxPageStatus}}" wx:for="{{listData}}" wx:key="id"></coupon>
+  </view>
+  <view class="couponList" wx:else>
+    <view class="title">不可用券列表({{listData2.length}})</view>
+    <coupon info="{{item}}" mpxPageStatus="{{mpxPageStatus}}" wx:for="{{listData2}}" wx:key="id"></coupon>
+  </view>
+</view>
