@@ -37,12 +37,12 @@
     "@dcloudio/uni-stat": "^2.0.0-26120200226001",
     "flyio": "^0.6.2",
     "regenerator-runtime": "^0.12.1",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
     "vue": "^2.6.11",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
     "@dcloudio/uni-cli-shared": "^2.0.0-26120200226001",
     "@dcloudio/uni-migration": "^2.0.0-26120200226001",
     "@dcloudio/uni-template-compiler": "^2.0.0-26120200226001",

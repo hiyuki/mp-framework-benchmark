@@ -38,11 +38,11 @@
     "@tarojs/components": "3.0.0-alpha.5",
     "@tarojs/runtime": "3.0.0-alpha.5",
     "@tarojs/taro": "3.0.0-alpha.5",
-    "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
     "vue": "^2.5.0"
   },
   "devDependencies": {
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
     "@types/webpack-env": "^1.13.6",
     "@tarojs/mini-runner": "3.0.0-alpha.5",
     "@babel/core": "^7.8.0",

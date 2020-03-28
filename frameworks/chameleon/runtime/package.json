@@ -13,8 +13,10 @@
     "chameleon-api": "1.0.0",
     "chameleon-runtime": "1.0.0",
     "chameleon-store": "1.0.0",
-    "chameleon-tool": "^1.0.5",
     "chameleon-ui-builtin": "1.0.0",
     "cml-ui": "1.0.0"
+  },
+  "devDependencies": {
+    "chameleon-tool": "^1.0.5"
   }
 }
