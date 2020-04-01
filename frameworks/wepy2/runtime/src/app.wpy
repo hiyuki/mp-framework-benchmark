@@ -1,11 +1,12 @@
 <script>
   import wepy from '@wepy/core'
-  import { proxySetData } from './utils/proxy'
+  import { proxySetData,setReadyStart } from './utils/proxy'
 
   proxySetData({
     console: true
   })
 
+  setReadyStart()
 
   wepy.app({
     onLaunch () {
@@ -16,7 +17,8 @@
 <config>
   {
   pages: [
-  'pages/index'
+  'pages/index',
+  'pages/static'
   ],
   window: {
   backgroundTextStyle: 'light',

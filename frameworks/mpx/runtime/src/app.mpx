@@ -1,16 +1,13 @@
 <script>
-  import mpx, { createApp } from '@mpxjs/core'
-  import apiProxy from '@mpxjs/api-proxy'
+  import { createApp } from '@mpxjs/core'
 
-  mpx.use(apiProxy)
-
-  mpx.config.useStrictDiff = true
-
-  import { proxySetData } from '../../../../utils/proxy'
+  import { proxySetData, setReadyStart } from '../../../../utils/proxy'
 
   proxySetData({
     console: true
   })
+
+  setReadyStart()
 
   // app.js
   createApp({

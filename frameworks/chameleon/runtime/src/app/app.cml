@@ -4,11 +4,15 @@
 
 <script>
   import routerConfig from '../router.config.json'
-  import { proxySetData } from '../../../../../utils/proxy'
+  import { proxySetData, setReadyStart } from '../../../../../utils/proxy'
 
   proxySetData({
-    console: true
+    console: true,
+    count: true,
+    size: true
+
   })
+  setReadyStart()
 
   class App {
     data = {

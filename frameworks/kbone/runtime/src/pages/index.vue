@@ -2,12 +2,13 @@
   <div>
     <div class="controls">
       <wx-button @click="add">新增可用券(100)</wx-button>
-      <wx-button @click="addLot">新增可用券(1000)</wx-button>
-      <wx-button @click="deleteOne">删除可用券(1)</wx-button>
       <wx-button @click="deleteAll">删除可用券(all)</wx-button>
+      <wx-button @click="addLot">新增可用券(1000)</wx-button>
       <wx-button @click="update">更新可用券(1)</wx-button>
       <wx-button @click="updateAll">更新可用券(all)</wx-button>
+      <wx-button @click="deleteOne">删除可用券(1)</wx-button>
       <wx-button @click="add2Lot">新增不可用券(1000)</wx-button>
+      <wx-button @click="add2Lot2">新增不可用券(5000)</wx-button>
       <wx-button @click="toggleList">切换到{{show2?'可用券':'不可用券'}}</wx-button>
       <wx-button @click="reLaunch">刷新页面</wx-button>
       <wx-button @click="reLaunch2">进入静态测试</wx-button>
@@ -27,10 +28,8 @@
   import coupon from '../components/coupon'
   import { buildData } from '../../../../../utils/data'
 
-  const { getTimeWithModal, getCurrentPageContext } = wx.proxy
+  const { getTimeWithModal, getCurrentPageContext,getReadyTimeWithModal,setReadyStart } = wx.proxy
 
-  wx.startTime = +new Date()
-  const data = buildData(100)
 
   export default {
     components: {
@@ -38,27 +37,25 @@
     },
     data () {
       return {
-        listData: data,
+        listData: [],
         listData2: [],
         show2: false
       }
     },
     created () {
       window.addEventListener('wxready', () => {
-        wx.showModal({
-          content: `页面ready耗时: ${+new Date() - wx.startTime}`
-        })
+        getReadyTimeWithModal()
       })
     },
     methods: {
       reLaunch () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/index/index'
         })
       },
       reLaunch2 () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/static/index'
         })
@@ -71,6 +68,10 @@
         getTimeWithModal(this.$el._wxComponent)
         this.listData2 = this.listData2.concat(buildData(1000, true))
       },
+      add2Lot2 () {
+        getTimeWithModal(this.$el._wxComponent)
+        this.listData2 = this.listData2.concat(buildData(5000, true))
+      },
       add () {
         getTimeWithModal(this.$el._wxComponent)
         this.listData = this.listData.concat(buildData(100))
@@ -81,9 +82,7 @@
       },
       deleteOne () {
         getTimeWithModal(this.$el._wxComponent)
-        const listData = this.listData.slice()
-        listData.shift()
-        this.listData = listData
+        this.listData.shift()
       },
       deleteAll () {
         getTimeWithModal(this.$el._wxComponent)
@@ -91,19 +90,16 @@
       },
       update () {
         getTimeWithModal(this.$el._wxComponent)
-        const listData = this.listData.slice()
+        const listData = this.listData
         if (listData[0]) {
-          listData[0].amount += 1
-          this.listData = listData
+          listData[0].amount++
         }
       },
       updateAll () {
         getTimeWithModal(this.$el._wxComponent)
-        const listData = this.listData.slice()
-        listData.forEach((item) => {
-          item.amount += 1
+        this.listData.forEach((item) => {
+          item.amount++
         })
-        this.listData = listData
       }
     }
   }

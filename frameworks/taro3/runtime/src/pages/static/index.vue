@@ -161,22 +161,21 @@
 
 <script>
   import './index.styl'
+  import { setReadyStart, getReadyTimeWithModal } from '../../../../../../utils/proxy'
 
   export default {
-    onReady () {
-      wx.showModal({
-        content: `页面ready耗时: ${+new Date() - wx.startTime}`
-      })
+    ready () {
+      getReadyTimeWithModal()
     },
     methods: {
       reLaunch () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/static/index'
         })
       },
       reLaunch2 () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/index/index'
         })

@@ -3,7 +3,9 @@ let size = 0
 let proxyed = false
 let options = {}
 let currentPageContext
-let appLaunchTime
+let readyStart
+let readyEnd
+let readyTimer
 
 function doProxy (context) {
   const setDataRaw = context.setData
@@ -16,7 +18,7 @@ function doProxy (context) {
     const lastSetTime = +new Date()
     const data = args[0]
     if (data) {
-      if (options.size) size += JSON.stringify(data).length
+      if (options.size) size += byteLength(JSON.stringify(data))
       if (options.console) {
         if (count) {
           console.log('累计setData次数:', count)
@@ -30,8 +32,11 @@ function doProxy (context) {
     const callbackRaw = args[1]
     args[1] = function (...args) {
       context._setting = false
+      const now = +new Date()
+      if (readyStart) {
+        readyEnd = now
+      }
       if (context._lastTime && context._lastCallback) {
-        const now = +new Date()
         context._lastCallback(null, {
           totalTime: now - context._lastTime,
           setTime: now - lastSetTime,
@@ -46,6 +51,17 @@ function doProxy (context) {
   }
 }
 
+function byteLength (str) {
+  let s = str.length
+  for (let i = str.length - 1; i >= 0; i--) {
+    let code = str.charCodeAt(i)
+    if (code > 0x7f && code <= 0x7ff) s++
+    else if (code > 0x7ff && code <= 0xffff) s += 2
+    if (code >= 0xDC00 && code <= 0xDFFF) i--
+  }
+  return s
+}
+
 
 export function proxySetData (proxyOptions = {}) {
   if (proxyed) return
@@ -54,30 +70,10 @@ export function proxySetData (proxyOptions = {}) {
 
   const context = proxyOptions.context || {}
 
-  // proxyApp
-  const AppRaw = context.App || App
-
-  const proxyApp = function (...args) {
-    const options = args[0]
-    const onLaunchRaw = options.onLaunch
-    options.onLaunch = function (...args) {
-      appLaunchTime = +new Date()
-      onLaunchRaw && onLaunchRaw.apply(this, args)
-    }
-    return AppRaw.apply(this, args)
-  }
-
-  if (context.App) {
-    context.App = proxyApp
-  } else {
-    App = proxyApp
-  }
-
   // proxyPage
   const PageRaw = context.Page || Page
 
   const proxyPage = function (...args) {
-    debugger
     const options = args[0]
     const onLoadRaw = options.onLoad
     options.onLoad = function (...args) {
@@ -90,6 +86,15 @@ export function proxySetData (proxyOptions = {}) {
     options.onShow = function (...args) {
       currentPageContext = this
       onShowRaw && onShowRaw.apply(this, args)
+    }
+
+    if (proxyOptions.ready) {
+      const onReadyRaw = options.onReady
+
+      options.onReady = function (...args) {
+        getReadyTimeWithModal()
+        onReadyRaw && onReadyRaw.apply(this, args)
+      }
     }
 
     return PageRaw.apply(this, args)
@@ -124,16 +129,6 @@ export function proxySetData (proxyOptions = {}) {
   }
 }
 
-export function setAppLaunchTime (date) {
-  appLaunchTime = date
-
-}
-
-export function getAppLaunchTime () {
-  if (!appLaunchTime) throw new Error('App is not launched yet!')
-  return appLaunchTime
-}
-
 export function getCurrentPageContext () {
   if (!currentPageContext) throw new Error('CurrentPageContext is not exist!')
   return currentPageContext
@@ -160,6 +155,24 @@ export function getTime (context, callback) {
   } else {
     throw new Error('Context must be passed in!')
   }
+}
+
+export function setReadyStart () {
+  readyStart = +new Date()
+}
+
+export function getReadyTimeWithModal (delay = 1000) {
+  readyEnd = +new Date()
+  clearTimeout(readyTimer)
+  readyTimer = setTimeout(() => {
+    if (readyStart && readyEnd) {
+      console.log('Ready!!')
+      wx.showModal({
+        content: `Ready耗时: ${readyEnd - readyStart}`
+      })
+    }
+    readyStart = readyEnd = undefined
+  }, delay)
 }
 
 export function getTimeWithModal (context) {

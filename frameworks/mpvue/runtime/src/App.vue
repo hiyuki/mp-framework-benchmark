@@ -1,11 +1,13 @@
 <script>
-  import { proxySetData } from '../../../../utils/proxy'
+  import { proxySetData, setReadyStart } from '../../../../utils/proxy'
 
 
   proxySetData({
     console: true,
     context: global
   })
+
+  setReadyStart()
 
   export default {
     onLaunch () {

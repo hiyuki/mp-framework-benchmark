@@ -2,29 +2,24 @@ const proxy = require('../../utils/proxy')
 const dataHelper = require('../../utils/data')
 
 
-wx.startTime = +new Date()
-const data = dataHelper.buildData(100)
-
 Component({
   data: {
-    listData: data,
+    listData: [],
     listData2: [],
     show2: false
   },
   methods: {
     onReady: function onReady () {
-      wx.showModal({
-        content: '页面ready耗时: ' + (+new Date() - wx.startTime)
-      })
+      proxy.getReadyTimeWithModal()
     },
     reLaunch: function reLaunch () {
-      wx.startTime = +new Date()
+      proxy.setReadyStart()
       wx.reLaunch({
         url: '/pages/index/index'
       })
     },
     reLaunch2: function reLaunch2 () {
-      wx.startTime = +new Date()
+      proxy.setReadyStart()
       wx.reLaunch({
         url: '/pages/static/static'
       })
@@ -41,6 +36,12 @@ Component({
         listData2: this.data.listData2.concat(dataHelper.buildData(1000, true))
       })
     },
+    add2Lot2: function add2Lot2 () {
+      proxy.getTimeWithModal(this)
+      this.setData({
+        listData2: this.data.listData2.concat(dataHelper.buildData(5000, true))
+      })
+    },
     add: function add () {
       proxy.getTimeWithModal(this)
       this.setData({
@@ -55,7 +56,7 @@ Component({
     },
     delete: function _delete () {
       proxy.getTimeWithModal(this)
-      var listData = this.data.listData.slice()
+      var listData = this.data.listData
       listData.shift()
       this.setData({
         listData
@@ -69,9 +70,9 @@ Component({
     },
     update: function update () {
       proxy.getTimeWithModal(this)
-      var listData = this.data.listData.slice()
+      var listData = this.data.listData
       if (listData[0]) {
-        listData[0].amount += 1
+        listData[0].amount++
         this.setData({
           listData
         })
@@ -79,9 +80,9 @@ Component({
     },
     updateAll: function updateAll () {
       proxy.getTimeWithModal(this)
-      var listData = this.data.listData.slice()
+      var listData = this.data.listData
       listData.forEach(function (item) {
-        item.amount += 1
+        item.amount++
       })
       this.setData({
         listData

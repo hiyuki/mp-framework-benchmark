@@ -47,7 +47,7 @@
                src="https://dpubstatic.udache.com/static/dpubimg/38652040-2fbf-435b-aeff-563666c4021c.png"
                alt="Mpx跨平台开发流程示意图"/>
       </view>
-      <view><em>Mpx跨平台开发流程示意图</em></view>
+      <view class="em">Mpx跨平台开发流程示意图</view>
       <view>Mpx跨平台能力设计思路明显区别于业内已有的其他小程序跨平台框架，主要差异在于：
         * Mpx以小程序本身的DSL作为基准，而没有使用web框架(React,Vue)的DSL；
         * Mpx主要通过编译和运行时转换的方式处理平台差异，没有提供额外的差异抹平层(基础组件库等)。
@@ -119,7 +119,7 @@
                src="https://dpubstatic.udache.com/static/dpubimg/9ead35f1-693f-44f4-beb3-f98555ab6861.png"
                alt="setData优化示意图"/>
       </view>
-      <view><em>setData优化示意图</em></view>
+      <view class="em">setData优化示意图</view>
       <view class="h3" id="toc_8">包体积优化</view>
       <view>
         类似于运行时对于setData的接管，Mpx在编译阶段接管了项目的资源管理。得益于webpack强大的插件机制，Mpx开发了一个深度定制的webpack插件，基于webpack完成小程序的打包构建工作。用户在使用Mpx开发小程序时可以不受限制地使用npm依赖、最新的es特性和css预处理器等现代web开发能力。与此同时，Mpx在包体积优化上也做了很多工作，让用户专注于业务开发而无需花费过多精力进行包体积管理，我们所做的优化工作如下：
@@ -140,7 +140,7 @@
                src="https://dpubstatic.udache.com/static/dpubimg/3121ca4e-1b47-43bc-992a-b351c4a03da4.png"
                alt="分包构建示意图"/>
       </view>
-      <view><em>分包构建示意图</em></view>
+      <view class="em">分包构建示意图</view>
       <view class="h2" id="toc_9">渐进迁移</view>
       <view>Mpx提供了良好的渐进迁移支持，对于使用原生或其他小程序框架的开发者来说，采用渐进迁移的方式逐步引入Mpx进行开发成本并不大。</view>
       <view>
@@ -160,22 +160,21 @@
 </template>
 
 <script>
+  import { getReadyTimeWithModal, setReadyStart } from '../../../../../../utils/proxy'
 
   export default {
     onReady () {
-      wx.showModal({
-        content: `页面ready耗时: ${+new Date() - wx.startTime}`
-      })
+      getReadyTimeWithModal()
     },
     methods: {
       reLaunch () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/static/main'
         })
       },
       reLaunch2 () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/index/main'
         })
@@ -228,6 +227,9 @@
 
     .h3
       font-size 18px
+
+    .em
+      font-style: italic
 
     .pre
       background-color #f8f8f8

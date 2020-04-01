@@ -45,6 +45,9 @@
 .body .h3 {
   font-size: 18px;
 }
+.body .em {
+  font-style: italic;
+}
 .body .pre {
   background-color: #f8f8f8;
   border: 1px solid #ccc;

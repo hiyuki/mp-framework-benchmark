@@ -2,12 +2,13 @@
   <view>
     <view class="controls">
       <button @click="add">新增可用券(100)</button>
-      <button @click="addLot">新增可用券(1000)</button>
-      <button @click="deleteOne">删除可用券(1)</button>
       <button @click="deleteAll">删除可用券(all)</button>
+      <button @click="addLot">新增可用券(1000)</button>
       <button @click="update">更新可用券(1)</button>
       <button @click="updateAll">更新可用券(all)</button>
+      <button @click="deleteOne">删除可用券(1)</button>
       <button @click="add2Lot">新增不可用券(1000)</button>
+      <button @click="add2Lot2">新增不可用券(5000)</button>
       <button @click="toggleList">切换到{{show2?'可用券':'不可用券'}}</button>
       <button @click="reLaunch">刷新页面</button>
       <button @click="reLaunch2">进入静态测试</button>
@@ -26,10 +27,8 @@
 <script>
   import coupon from '../components/coupon'
   import { buildData } from '../../../../../utils/data'
-  import { getTimeWithModal } from '../../../../../utils/proxy'
+  import { getTimeWithModal, setReadyStart, getReadyTimeWithModal } from '../../../../../utils/proxy'
 
-  wx.startTime = +new Date()
-  const data = buildData(100)
 
   export default {
     components: {
@@ -37,25 +36,23 @@
     },
     data () {
       return {
-        listData: data,
+        listData: [],
         listData2: [],
         show2: false
       }
     },
     onReady () {
-      wx.showModal({
-        content: `页面ready耗时: ${+new Date() - wx.startTime}`
-      })
+      getReadyTimeWithModal()
     },
     methods: {
       reLaunch () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/index'
         })
       },
       reLaunch2 () {
-        wx.startTime = +new Date()
+        setReadyStart()
         wx.reLaunch({
           url: '/pages/static'
         })
@@ -68,6 +65,10 @@
         getTimeWithModal(this.$scope)
         this.listData2 = this.listData2.concat(buildData(1000, true))
       },
+      add2Lot2 () {
+        getTimeWithModal(this.$scope)
+        this.listData2 = this.listData2.concat(buildData(5000, true))
+      },
       add () {
         getTimeWithModal(this.$scope)
         this.listData = this.listData.concat(buildData(100))
@@ -78,9 +79,7 @@
       },
       deleteOne () {
         getTimeWithModal(this.$scope)
-        const listData = this.listData.slice()
-        listData.shift()
-        this.listData = listData
+        this.listData.shift()
       },
       deleteAll () {
         getTimeWithModal(this.$scope)
@@ -88,19 +87,16 @@
       },
       update () {
         getTimeWithModal(this.$scope)
-        const listData = this.listData.slice()
+        const listData = this.listData
         if (listData[0]) {
-          listData[0].amount += 1
-          this.listData = listData
+          listData[0].amount++
         }
       },
       updateAll () {
         getTimeWithModal(this.$scope)
-        const listData = this.listData.slice()
-        listData.forEach((item) => {
-          item.amount += 1
+        this.listData.forEach((item) => {
+          item.amount++
         })
-        this.listData = listData
       }
     }
   }

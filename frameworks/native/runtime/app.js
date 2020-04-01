@@ -4,6 +4,8 @@ proxy.proxySetData({
   console: true
 })
 
+proxy.setReadyStart()
+
 App({
   onLaunch () {
   }

@@ -1,12 +1,13 @@
 <view>
   <view class="controls">
     <button bindtap="add">新增可用券(100)</button>
-    <button bindtap="addLot">新增可用券(1000)</button>
-    <button bindtap="delete">删除可用券(1)</button>
     <button bindtap="deleteAll">删除可用券(all)</button>
+    <button bindtap="addLot">新增可用券(1000)</button>
     <button bindtap="update">更新可用券(1)</button>
     <button bindtap="updateAll">更新可用券(all)</button>
+    <button bindtap="delete">删除可用券(1)</button>
     <button bindtap="add2Lot">新增不可用券(1000)</button>
+    <button bindtap="add2Lot2">新增不可用券(5000)</button>
     <button bindtap="toggleList">切换到{{show2?'可用券':'不可用券'}}</button>
     <button bindtap="reLaunch">刷新页面</button>
     <button bindtap="reLaunch2">进入静态测试</button>

@@ -1,17 +1,59 @@
 {
 	"compileType": "miniprogram",
 	"setting": {
-		"newFeature": true,
 		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
-		"minified": false,
-		"autoAudits": false
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"appid": "wxe9646e768c9be135",
 	"projectname": "native-runtime-benchmark",
 	"description": "Native runtime benchmark",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/static/static",
+					"pathName": "pages/static/static",
+					"scene": null
+				}
+			]
+		}
+	}
 }

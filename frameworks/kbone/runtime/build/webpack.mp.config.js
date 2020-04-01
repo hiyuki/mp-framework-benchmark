@@ -12,7 +12,7 @@ const mpPluginConfig = require('./miniprogram.config.js') // 插件配置
 
 const isDevelop = process.env.NODE_ENV === 'development'
 const isOptimize = !isDevelop // 是否压缩业务代码，开发者工具可能无法完美支持业务代码使用到的 es 特性，建议自己做代码压缩
-
+debugger
 module.exports = {
   mode: 'production',
   entry: {

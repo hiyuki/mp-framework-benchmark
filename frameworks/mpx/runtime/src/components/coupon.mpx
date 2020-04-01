@@ -1,5 +1,5 @@
 <template>
-  <view class="coupon" bindtap="toggleSelect" wx:class="{{ {selected:selected, invalid:!info.valid} }}">
+  <view bindtap="toggleSelect" class="{{!info.valid?'invalid coupon':selected?'selected coupon':'coupon'}}">
     <view class="desc">
       <view class="main">
         {{info.type}}券
