@@ -35,7 +35,7 @@
 
 动态测试demo模拟了实际业务中常见的长列表+多tab场景，该demo中存在两份优惠券列表数据，一份为可用券数据，另一份为不可用券数据，其中同一时刻视图中只会渲染展示其中一份数据，可以在上方的操作区模拟对列表数据的各种操作及视图展示切换(切tab)。
 
-<img src="https://dpubstatic.udache.com/static/dpubimg/PWsGL0GkuQ/dynamic.jpeg" width="300px"></img>
+<img src="https://dpubstatic.udache.com/static/dpubimg/5TOToHvunN/static.jpeg" width="300px"></img>
 
 *动态测试demo*
 
