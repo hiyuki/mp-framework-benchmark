@@ -153,8 +153,6 @@ native > mpx ≈ uniapp > chameleon > mpvue > wepy2 > taro next > kbone
 
 ### 页面更新耗时(有后台数据)
 
-> 对于kbone和taro next框架进行更新测试时会消耗大量cpu内存资源，导致手机发热性能数据显著下降，建议每次完成一组测试后重启微信再进行下一组测试。
-
 刷新页面后我们使用`新增不可用券(1000)`创建后台数据，观察该操作是否会触发setData并统计耗时
 
 |     | back add(1000) | 
