@@ -70,7 +70,7 @@
 |uniapp|114|87|
 |mpx|78|51|
 |chameleon|136|109|
-|mpvue|103Kb|76|
+|mpvue|103|76|
 |kbone|395|368|
 |taro next|183|156|
 
