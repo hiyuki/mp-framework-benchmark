@@ -140,7 +140,7 @@ mpx ≈ chameleon ≈ uniapp ≈ native ≈ wepy2 > taro next ≈ kbone ≈ mpvu
 | kbone |120.2|4978|2356.4|2419.4|2357|
 | taro next |126.6|3930.6|1607.8|1788.6|2318.2|
 
-> 该项测试中初期我update(all)的逻辑是循环对每个列表项进行更新，形如`listData.forEach((item)=>{item.count++})`，发现在chameleon框架中执行界面会完全卡死，追踪发现chameleon框架中没有对setData进行异步合并处理，而是在数据相应时直接同步发送，这样在数据量为1000的场景下用该方式进行更新会高频触发1000次setData，导致界面卡死；对此，我在chameleon框架的测试demo中，将update(all)的逻辑调整为深clone产生一份更新后的listData，再将其整体赋值到this.listData当中，以确保该项测试能够正常进行。
+> 该项测试中初期我update(all)的逻辑是循环对每个列表项进行更新，形如`listData.forEach((item)=>{item.count++})`，发现在chameleon框架中执行界面会完全卡死，追踪发现chameleon框架中没有对setData进行异步合并处理，而是在数据变动时直接同步发送，这样在数据量为1000的场景下用该方式进行更新会高频触发1000次setData，导致界面卡死；对此，我在chameleon框架的测试demo中，将update(all)的逻辑调整为深clone产生一份更新后的listData，再将其整体赋值到this.listData当中，以确保该项测试能够正常进行。
 
 
 该项测试的结论为：  
