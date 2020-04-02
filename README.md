@@ -74,7 +74,8 @@
 |kbone|395|368|
 |taro next|183|156|
 
-该项测试的结论为：native > wepy2 > mpx > mpvue > uniapp > chameleon > taro next > kbone
+该项测试的结论为：  
+native > wepy2 > mpx > mpvue > uniapp > chameleon > taro next > kbone
 
 结论分析：
 * wepy2和mpx在框架运行时体积上控制得最好；
@@ -97,7 +98,8 @@
 
 > 该项测试的耗时并不等同于真实的渲染耗时，由于小程序自身没有提供performance api，真实渲染耗时无法通过js准确测试得出，不过从得出的数据来看该项数据依然具备一定的参考意义。
 
-该项测试的结论为：mpx ≈ chameleon ≈ uniapp ≈ native ≈ wepy2 > taro next ≈ kbone ≈ mpvue
+该项测试的结论为：  
+mpx ≈ chameleon ≈ uniapp ≈ native ≈ wepy2 > taro next ≈ kbone ≈ mpvue
 
 结论分析：
 * 由于mpvue全量在页面进行渲染，kbone和taro next采用了动态渲染技术，页面渲染耗时较长，其余框架并无太大区别。
@@ -141,7 +143,8 @@
 > 该项测试中初期我update(all)的逻辑是循环对每个列表项进行更新，形如`listData.forEach((item)=>{item.count++})`，发现在chameleon框架中执行界面会完全卡死，追踪发现chameleon框架中没有对setData进行异步合并处理，而是在数据相应时直接同步发送，这样在数据量为1000的场景下用该方式进行更新会高频触发1000次setData，导致界面卡死；对此，我在chameleon框架的测试demo中，将update(all)的逻辑调整为深clone产生一份更新后的listData，再将其整体赋值到this.listData当中，以确保该项测试能够正常进行。
 
 
-该项测试的结论为：native > mpx ≈ uniapp > chameleon > mpvue > wepy2 > taro next > kbone
+该项测试的结论为：  
+native > mpx ≈ uniapp > chameleon > mpvue > wepy2 > taro next > kbone
 
 结论分析：
 * mpx和uniapp在框架内部进行了完善的diff优化，随着数据量的增加，两个框架的新增耗时没有显著上升；
@@ -193,7 +196,8 @@
 | kbone |121.4|4978.2|2331.2|2448.4|2348
 | taro next |129.8|3947.2|1610.4|1813.8|2290.2|
 
-该项测试的结论为：native > mpx > uniapp > chameleon > mpvue > wepy2 > taro next > kbone
+该项测试的结论为：  
+native > mpx > uniapp > chameleon > mpvue > wepy2 > taro next > kbone
 
 结论分析：
 * 具备模板数据跟踪能力的三个框架mpx，kbone和taro next在有后台数据场景下耗时并没有显著增加；
@@ -232,7 +236,8 @@
 | mpx |538.8|501.8|562.6|573.6|595.2| 
 | chameleon |1509.2|1672.4|1951.8|2232.4|2586.2| 
 
-该项测试的结论为：native > mpx > uniapp > chameleon > wepy2
+该项测试的结论为：  
+native > mpx > uniapp > chameleon > wepy2
 
 结论分析：
 * 在大数据量场景下，框架之间基础性能的差异会变得更加明显，mpx和uniapp依然保持了接近原生的良好性能表现，而chameleon和wepy2则产生了比较显著的性能劣化。
@@ -252,7 +257,8 @@
 | kbone |2440.8| 
 | taro next |1975| 
 
-该项测试的结论为：native ≈ chameleon ≈ mpx ≈ wepy2 ≈ uniapp > mpvue > taro next > kbone
+该项测试的结论为：  
+native ≈ chameleon ≈ mpx ≈ wepy2 ≈ uniapp > mpvue > taro next > kbone
 
 结论分析：
 * 可以看出所有使用了原生自定义组件进行组件化实现的框架局部更新耗时都极低，这足以证明小程序原生自定义组件的优秀性和重要性；
@@ -285,7 +291,8 @@
 | taro next |9|2321|
 
 
-该项测试的结论为：mpx > uniapp > native > chameleon > wepy2 > taro next > mpvue > kbone
+该项测试的结论为：  
+mpx > uniapp > native > chameleon > wepy2 > taro next > mpvue > kbone
 
 结论分析：
 * mpx框架成功实现了理论上setData的最优；
@@ -313,15 +320,15 @@
 | kbone |144.2| 
 | taro next |119.8| 
 
-该项测试的结论为：chameleon ≈ mpx ≈ uniapp ≈ native > wepy2 > mpvue ≈ taro next > kbone
+该项测试的结论为：  
+chameleon ≈ mpx ≈ uniapp ≈ native > wepy2 > mpvue ≈ taro next > kbone
 
 结论分析：
 * 除了kbone和taro next采用动态渲染耗时增加，mpvue使用页面模板渲染性能稍差，其余框架的静态页面渲染表现都和原生差不多。
 
 ## 结论
 
-综合上述测试数据，我们得到最终的小程序框架运行时性能排名为：
-
+综合上述测试数据，我们得到最终的小程序框架运行时性能排名为：  
 mpx > uniapp > chameleon > wepy2 > mpvue > taro next > kbone
 
 ## 一点私货
