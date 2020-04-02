@@ -6,12 +6,12 @@
 
 在本文中，我们会对下列框架进行运行时性能测试(排名不分先后):
 * wepy2(https://github.com/Tencent/wepy) @2.0.0-alpha.20
-* uniapp(https://github.com/dcloudio/uni-app)@2.0.0-26120200226001
-* mpx(https://github.com/didi/mpx)@2.5.3
-* chameleon(https://github.com/didi/chameleon)@1.0.5
-* mpvue(https://github.com/Meituan-Dianping/mpvue)@2.0.6
-* kbone(https://github.com/Tencent/kbone)@0.8.3
-* taro next(https://github.com/NervJS/taro)@3.0.0-alpha.5
+* uniapp(https://github.com/dcloudio/uni-app) @2.0.0-26120200226001
+* mpx(https://github.com/didi/mpx) @2.5.3
+* chameleon(https://github.com/didi/chameleon) @1.0.5
+* mpvue(https://github.com/Meituan-Dianping/mpvue) @2.0.6
+* kbone(https://github.com/Tencent/kbone) @0.8.3
+* taro next(https://github.com/NervJS/taro) @3.0.0-alpha.5
 
 其中对于kbone和taro next均以vue作为业务框架进行测试。
 
@@ -23,7 +23,7 @@
 * setData调用次数
 * setData发送数据大小
 
-框架性能测试demo全部存放于https://github.com/hiyuki/mp-framework-benchmark中，欢迎广大开发者进行验证纠错及补全；
+框架性能测试demo全部存放于https://github.com/hiyuki/mp-framework-benchmark 中，欢迎广大开发者进行验证纠错及补全；
 
 ## 测试方案
 
@@ -39,7 +39,7 @@
 
 *动态测试demo*
 
-在动态测试中，我在外部通过函数代理的方式在初始化之前将App、Page和Component构造器进行代理，通过mixin的方式在Page的onLoad和Component的created钩子中注入setData拦截逻辑，对所有页面和组件的setData调用进行监听，并统计小程序的视图更新耗时及setData调用情况。该测试方式能够做到对框架代码的零侵入，能够跟踪到小程序全量的setData行为并进行独立的耗时计算，具有很强的普适性，代码具体实现可以查看https://github.com/hiyuki/mp-framework-benchmark/blob/master/utils/proxy.js。
+在动态测试中，我在外部通过函数代理的方式在初始化之前将App、Page和Component构造器进行代理，通过mixin的方式在Page的onLoad和Component的created钩子中注入setData拦截逻辑，对所有页面和组件的setData调用进行监听，并统计小程序的视图更新耗时及setData调用情况。该测试方式能够做到对框架代码的零侵入，能够跟踪到小程序全量的setData行为并进行独立的耗时计算，具有很强的普适性，代码具体实现可以查看https://github.com/hiyuki/mp-framework-benchmark/blob/master/utils/proxy.js
 
 ### 静态测试场景
 
